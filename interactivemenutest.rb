@@ -4,7 +4,7 @@ def input_students
 	#creates an empty array
 	students = []
 	name = gets.chomp
-	#while then name is not empty, repeat this code
+	#whiile then name is not empty, repeat this code
 	while !name.empty? do
 	#add the student hash to the array
 	students << {:name => name, :cohort => :june}
@@ -13,7 +13,7 @@ def input_students
 	name = gets.chomp
 end
 #return array of students
-students
+students 
 end
 
 def print_header
@@ -22,12 +22,18 @@ def print_header
 end
 
 def print(students)
-	count = 0
-	while count < students.length do
-	p "#{students[count][:name]} #{students[count][:cohort]} cohort" 
-	count = count + 1 
+	students.each do |student|
+	p "#{student[:name]} (#{student[:cohort]} cohort)" 
+	end
 end
-end 
+
+def students_begins_with_A(students)
+	p "these just begin with a"
+	students.each do | student|
+	p "#{student[:name]} (#{student[:cohort]} cohort)" if student[:name].length < 12
+end
+
+end
 
 def print_footer(names)
 	p "Overall we have #{names.length} mighty students"
@@ -35,6 +41,5 @@ end
 #nothing will happen until we do the last bit
 students = input_students
 print_header
-print(students)
+students_begins_with_A(students)
 print_footer(students)
-
